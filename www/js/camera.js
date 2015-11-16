@@ -29,8 +29,8 @@ sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
         options.chunkedMode = false;
    
         var ft = new FileTransfer();
-        navigator.notification.activityStart("pridephoto2", "Uploading...");
-        ft.upload(imageURI, "http://m.pridephoto2.com/upload.php", win, fail, options);
+        navigator.notification.activityStart("RococoPhoto", "Uploading...");
+        ft.upload(imageURI, "http://m.gallerybear.com/upload.php", win, fail, options);
     }
 
     function win(r) {

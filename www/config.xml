@@ -1,14 +1,15 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.pridevn.anyphoto" version="1.0.6" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.pridevn.anyphoto" version="1.0.8" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>pridevn</name>
     <description>
        pridevn
     </description>
-    <author email="ch7@daum.net" href="http://m.rococophoto.com">
+    <author email="ch7@daum.net" href="http://m.pridevn.com">
         pridevn
     </author>
     <content src="index.html" />
-   <preference name="permissions" value="none" />
+    
+    <preference name="permissions" value="none" />
     <preference name="phonegap-version" value="3.7.0" />
     <preference name="orientation" value="default" />
     <preference name="target-device" value="universal" />
@@ -44,8 +45,8 @@
     <gap:plugin name="org.apache.cordova.vibration" />
      <gap:plugin name="com.millerjames01.sqlite-plugin" version="1.0.1" />
     <gap:plugin name="com.sharinglabs.cordova.plugin.cache" version="1.0.0" />
-    <gap:plugin name="com.google.cordova.admob" source="plugins.cordova.io"/>
-    <gap:plugin name="com.phonegap.plugins.pushplugin" version="2.4.0" />
+    
+    <gap:plugin name="com.phonegap.plugins.pushplugin" version="2.5.0" />
     
     <icon src="icon.png" />
     <icon gap:platform="android" gap:qualifier="ldpi" src="www/res/icon/android/icon-36-ldpi.png" />

@@ -95,7 +95,7 @@ function json_call(reg_id) {
       var reg_id=reg_id;
       var deviceid=device.uuid;
       // gcm reg_id 등록  
-         $.post("http://m.pridephoto2.com/gcm_reg_app.php",
+         $.post("http://m.gallerybear.com/gcm_reg_app.php",
    {
     reg_id:reg_id,
     deviceid:deviceid
@@ -111,7 +111,7 @@ function json_call(reg_id) {
 function left_menu() {
  
      $( document ).ready(function() {
-                    $.post("http://m.pridephoto2.com/left_menu.php",
+                    $.post("http://m.gallerybear.com/left_menu.php",
                {
                    
                  
@@ -135,7 +135,7 @@ var link;
 function goHref(url) {
   var url=url;
   var uuid=device.uuid;
-  url="http://m.pridephoto2.com"+url+"&uuid="+uuid;
+  url="http://m.gallerybear.com/"+url+"&uuid="+uuid;
   var ref = window.open(url, '_blank', 'location=no');
   ref.addEventListener('loadstart', function(event) { 
     
@@ -152,10 +152,9 @@ function goHref(url) {
         var result2=link.indexOf('goprofile');
           if(result2>-1) {
             var member=link.split("&");
-            var cnt=member.length;
-         
-            var memberuid=member[cnt];
-
+            var cnt=member.length-1; // 2015-05-25일 수정 이전 배열에서 -1 해서 처리 &갯수 0,1,2,3 
+                     var memberuid=member[cnt];
+          
             ref.close();
             goprofile(memberuid);
         }
@@ -168,7 +167,7 @@ function getpage(uuid,page) {
         // uuid는 기기 번호 
     var uuid=uuid;
     var page=page;
-    var url="http://m.pridephoto2.com/"+page+".php";
+    var url="http://m.gallerybear.com/"+page+".php";
  $.post(url,
    {
        
@@ -206,7 +205,7 @@ function check_uuid (deviceid) {
                 
         
 
-                     $.post("http://m.pridephoto2.com/check_uuid_app.php",
+                     $.post("http://m.gallerybear.com/check_uuid_app.php",
        {
                 deviceid:deviceid
        },
@@ -242,7 +241,7 @@ function onConfirm(buttonIndex) {
     var btn=buttonIndex;
     if (btn==1) {
 
-      $.post("http://m.pridephoto2.com/logout_app.php",
+      $.post("http://m.gallerybear.com/logout_app.php",
        {
                 deviceid:uuid
        },
@@ -299,7 +298,7 @@ sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
 });}
     function uploadPhoto_photo(imageURI) {
       var deviceid=device.uuid;
-        navigator.notification.activityStart("pridephoto2", "uploading photo");
+        navigator.notification.activityStart("gallerybear", "uploading photo");
         var options = new FileUploadOptions();
         options.fileKey="profile_image";
         options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
@@ -314,7 +313,7 @@ sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
         options.params = params;
         options.chunkedMode = false;
         var ft = new FileTransfer();
-        ft.upload(imageURI, "http://m.pridephoto2.com/upload_org.php", win_photo, fail, options);
+        ft.upload(imageURI, "http://m.gallerybear.com/upload_org.php", win_photo, fail, options);
     }
 
     function win_photo(r) {
@@ -345,7 +344,7 @@ function showPosition(position)
   var uuid=device.uuid;
  
   if (x) {
-   $.post("http://m.pridephoto2.com/gps_update_app.php",
+   $.post("http://m.gallerybear.com/gps_update_app.php",
    {
     y:y,
     x:x,
@@ -364,7 +363,7 @@ right_menu();
 
  $( document ).ready(function() {
 
-  $.post("http://m.pridephoto2.com/right_menu_app.php",
+  $.post("http://m.gallerybear.com/right_menu_app.php",
    {
       deviceid:deviceid
 

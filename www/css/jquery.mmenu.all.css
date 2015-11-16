@@ -259,10 +259,10 @@ html.mm-opened .mm-page {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); }
 
 .mm-ismenu {
-  background: #0950b8; }
+  background: #A68737; }
 
 .mm-menu {
-  color: rgba(255, 255, 255, 0.6); }
+  color: rgba(255, 255, 255, 10); }
   .mm-menu .mm-list > li:after {
     border-color: rgba(0, 0, 0, 0.15); }
   .mm-menu .mm-list > li > a.mm-subclose {
@@ -1181,7 +1181,7 @@ html.mm-opened.mm-light .mm-page {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); }
 
 .mm-ismenu.mm-light {
-   }
+  background: #A68737; }
 
 .mm-menu.mm-light {
   color: rgba(255, 255, 255, 0.6); }
