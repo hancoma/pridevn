@@ -1,145 +1,104 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-    <head>
-    
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-        <meta name="author" content="hancoma" />
-        <meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=no" />
-		    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
-
-
-
+	<head>
+	
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<meta name="author" content="hancoma" />
+		<meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=no" />
 
   <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="js/index.js"></script>
+		<link type="text/css" rel="stylesheet" href="css/demo2.css" />
 		
-
-        <link type="text/css" rel="stylesheet" href="css/demo2.css" />
-        
-        <link type="text/css" rel="stylesheet" href="css/jquery.mmenu.all.css" />
- 
-
-            
-
-        <script type="text/javascript" src="js/jquery.min.js"></script>
-    
-        <script type="text/javascript" src="js/jquery.mmenu.js"></script>
-
-		<script type="text/javascript" src="js/camera.js"></script>
-        <script type="text/javascript" src="js/app.js"></script>
-    <script type="text/javascript" src="http://m.gallerybear.com/js/around.js"></script>
-
-
-        <script type="text/javascript">
-            $(function() {
-                $('nav#menu').mmenu();
-            });
-        </script>
-    <script type="text/javascript">
-
-            //  The menu on the left
-            $(function() {
-                $('nav#menu-left').mmenu();
-            });
-
-
-            //  The menu on the right
-            $(function() {
-
-                var $menu = $('nav#menu-right');
-
-                $menu.mmenu({
-                    position    : 'right',
-                    classes     : 'mm-light',
-                    dragOpen    : true,
-                    counters    : true,
-                    searchfield : true,
-                    labels      : {
-                        fixed       : !$.mmenu.support.touch
-                    },
-                    header      : {
-                        add         : true,
-                        update      : true,
-                        title       : 'Contacts'
-                    }
-                });
-
-                //  Click a menu-item
-                var $confirm = $('#confirmation');
-                $menu.find( 'li a' ).not( '.mm-subopen' ).not( '.mm-subclose' ).bind(
-                    'click.example',
-                    function( e )
-                    {
-                        e.preventDefault();
-                        $confirm.show().text( 'You clicked "' + $.trim( $(this).text() ) + '"' );
-                        $('#menu-right').trigger( 'close' );
-                    }
-                );
-            });
-    
-    
-    
-  
-
-
-            function onLoad() {
-				 document.addEventListener("deviceready", onDeviceReady, false);
-}
- function onDeviceReady() {
-        // Register the event listener
-        var uuid=device.uuid;
-            // uuid 정리 
-
-            // gcm등록 
-            pushNotification = window.plugins.pushNotification;
-
-
-
-
-    pushNotification.register(
-        successHandler,
-        errorHandler, {
-            "senderID":"600905178536",
-            "ecb":"onNotificationGCM"
-        });
-
-    // gcm등록 
-        document.addEventListener("backbutton", function(e)
-    {
-   
-
-      navigator.app.backHistory();
-    
-    }, false);
-
-
-  document.addEventListener("menubutton", function(e)
-    {
-       
-
- if (confirm('exit')) {
-        navigator.app.exitApp();
-    }
-         
-       }, false);
-
-  show_around(uuid);
-
-    }
-
-  
-
-
-
- 
-  
-    
-
-
-
+		<link type="text/css" rel="stylesheet" href="css/jquery.mmenu.all.css" />
 	
+
+			
+
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+	
+		<script type="text/javascript" src="js/jquery.mmenu.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				$('nav#menu').mmenu();
+			});
 		</script>
-    </head>
+	<script type="text/javascript">
+
+			//	The menu on the left
+			$(function() {
+				$('nav#menu-left').mmenu();
+			});
+
+
+			//	The menu on the right
+			$(function() {
+
+				var $menu = $('nav#menu-right');
+
+				$menu.mmenu({
+					position	: 'right',
+					classes		: 'mm-light',
+					dragOpen	: true,
+					counters	: true,
+					searchfield	: true,
+					labels		: {
+						fixed		: !$.mmenu.support.touch
+					},
+					header		: {
+						add			: true,
+						update		: true,
+						title		: 'Contacts'
+					}
+				});
+
+				//	Click a menu-item
+				var $confirm = $('#confirmation');
+				$menu.find( 'li a' ).not( '.mm-subopen' ).not( '.mm-subclose' ).bind(
+					'click.example',
+					function( e )
+					{
+						e.preventDefault();
+						$confirm.show().text( 'You clicked "' + $.trim( $(this).text() ) + '"' );
+						$('#menu-right').trigger( 'close' );
+					}
+				);
+			});
+	
+	
     
-    <body onload="onLoad()">
+     <script>
+
+
+			function onLoad() {
+    document.addEventListener("backbutton", backKeyDown, true);
+}
+function backKeyDown() {
+     var div = document.getElementById('myDiv');
+   
+    
+}
+
+function onSuccess(position) {
+        var div = document.getElementById('myDiv');
+
+       // div.innerHTML = '위치정보 조회 끝';
+       
+    }
+
+    // Show an alert if there is a problem getting the geolocation
+    //
+    function onError() {
+        alert('onError!');
+    }
+  
+    
+
+</script>
+
+	</head>
+	
+	<body onload="onLoad()">
    <div id="home" style="display:none;">
     <div id="app-status-div">
         <ul id="app-status-ul">
@@ -151,25 +110,25 @@
 
   
   
-        <div id="page">
-            <div id="header">
-                <a href="#menu"></a>
-            gallerybear
-                
-                        <a href="#menu-right" class="friends right"></a>
-            </div>
-            <div id="content">
-            <!-- 매일 페이지 나오는 부분 -->
+		<div id="page">
+			<div id="header">
+				<a href="#menu"></a>
+			pridetw
+				
+						<a href="#menu-right" class="friends right"></a>
+			</div>
+			<div id="content">
+			<!-- 매일 페이지 나오는 부분 -->
 		
-            
-        
-            </div>
-              <nav id="menu">
+			
+		
+			</div>
+			  <nav id="menu">
                 <ul >
                                                         <li ><a href="around.html"  target="">
                         <img alt="local icon" class="tiled-icon" style="width: 20px; height: 20px;" src="icon/local.png"> 
                         
-            Friend</a>
+            Local</a>
                         </li>
                                         <li ><a href="global.html"  target="">
                         <img alt="blue, browser, earth, global, globe, international, internet, planet, world icon" class="tiled-icon" style="width: 20px; height: 20px;" src="icon/globeblue.png">
@@ -759,7 +718,7 @@
                 <li><span><a onclick="goHref('/?mod=mypage&&amp;page=people3');"> <img alt="friends, group, people, persons, users icon" class="tiled-icon" style="width: 20px; height: 20px;" src="icon/Users.png"><span id="rightmenu3">viewlist</span></a></span></li>     
                 <li><span><a onclick="goHref('/?mod=mypage&&amp;page=people');"><img alt="people, y icon" class="tiled-icon" style="width: 20px; height: 20px;" src="icon/people-y.png"> <span id="rightmenu4">pickedmember</span></a></span></li>     
                 <li><span><a onclick="goHref('/?mod=mypage&&amp;page=people2');"><img alt="b, people icon" class="tiled-icon" style="width: 20px; height: 20px;" src="icon/people-b.png"><span id="rightmenu5">pickedme</span></a></span></li> 
-                <li><span><a href="myphoto.html"><img alt="camera icon" class="tiled-icon" style="width: 20px; height: 20px;" src="icon/camera_icon.png"> <span id="rightmenu6">Photo Upload</span></a></span></li>
+                <li><span><a onclick="goHref('/?mod=mypage&amp;page=simbol2');"><img alt="camera icon" class="tiled-icon" style="width: 20px; height: 20px;" src="icon/camera_icon.png"> <span id="rightmenu6">Photo Upload</span></a></span></li>
                 <li><span><a onclick="goHref('/?mod=mypage&amp;page=info');"><img alt="document, edit, red icon" class="tiled-icon" style="width: 20px; height: 20px;" src="icon/pen.png"> <span id="rightmenu7">Myinfo Edit</span></a></span></li>
                 <li><span><a onclick="goHref('/?mod=mypage&amp;page=pw');"><img alt="lock, locked, password, secure, security, unlock icon" class="tiled-icon" style="width: 20px; height: 20px;" src="icon/lock-icon.png"> <spam id="rightmenu8">Change Password</spam></a></span></li>
                 <li><span><a onclick="goHref('/?mod=mypage&amp;page=out');" ><img alt="delete, user icon" class="tiled-icon" style="width: 20px; height: 20px;" src="icon/user_delete.png"> <span id="rightmenu9">Withdrawal</span></a></span></li>
@@ -770,9 +729,6 @@
                 </ul>
             </nav>
 
-        </div>
+		</div>
 
-        <script>
-        getLocation();
-
-        </script>
+		

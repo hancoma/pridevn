@@ -2,7 +2,7 @@
     <head>
     
         <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-        <meta name="author" content="webbuilder" />
+        <meta name="author" content="hancoma" />
         <meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=no" />
 		    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
 
@@ -22,18 +22,14 @@
         <script type="text/javascript" src="js/jquery.min.js"></script>
     
         <script type="text/javascript" src="js/jquery.mmenu.js"></script>
-<script type="text/javascript" charset="utf-8" src="js/PushNotification.js"></script>
+
 		<script type="text/javascript" src="js/camera.js"></script>
         <script type="text/javascript" src="js/app.js"></script>
-
-            <script type="text/javascript" src="http://m.rococophoto.net/js/app.js"></script>
-         
+      <script type="text/javascript" src="http://m.pridefr.com/js/rank.js"></script>
 
 
         <script type="text/javascript">
-     
             $(function() {
-
                 $('nav#menu').mmenu();
             });
         </script>
@@ -82,7 +78,7 @@
     
     
   
- var pushNotification;
+
 
             function onLoad() {
 				 document.addEventListener("deviceready", onDeviceReady, false);
@@ -91,21 +87,6 @@
         // Register the event listener
         var uuid=device.uuid;
             // uuid 정리 
-
-           
-  
-pushNotification = window.plugins.pushNotification;
-
-
-
-
-    pushNotification.register(
-        successHandler,
-        errorHandler, {
-            "senderID":"3240193503",
-            "ecb":"onNotificationGCM"
-        });
-            
         document.addEventListener("backbutton", function(e)
     {
    
@@ -119,34 +100,35 @@ pushNotification = window.plugins.pushNotification;
     {
        
 
- if (confirm('exit')) {
+ if (confirm('exit'+uuid)) {
         navigator.app.exitApp();
     }
          
        }, false);
 
-
- var success = function(status) {
-         navigator.notification.activityStop();
+  var getParameter = function (param) {
+    var returnValue;
+    var url = location.href;
+    var parameters = (url.slice(url.indexOf('?') + 1, url.length)).split('&');
+    for (var i = 0; i < parameters.length; i++) {
+        var varName = parameters[i].split('=')[0];
+        if (varName.toUpperCase() == param.toUpperCase()) {
+            returnValue = parameters[i].split('=')[1];
+            return decodeURIComponent(returnValue);
         }
+    }
+};
 
-        var error = function(status) {
-         navigator.notification.activityStop();
-        }
-navigator.notification.activityStart("RococoPhoto", "updating");
-        window.cache.clear( success, error );
+var sub_code=getParameter('sub_code');
 
-        
-      
+    if (!sub_code) {
+        sub_code='';
+    }
+    show_rank(uuid,sub_code);
 
-  check_uuid(uuid);
- 
- 
     }
 
   
-
-    
 
 
 
@@ -175,7 +157,7 @@ navigator.notification.activityStart("RococoPhoto", "updating");
         <div id="page">
             <div id="header">
                 <a href="#menu"></a>
-            RococoPhoto
+            pridefr
                 
                         <a href="#menu-right" class="friends right"></a>
             </div>
@@ -185,15 +167,15 @@ navigator.notification.activityStart("RococoPhoto", "updating");
             
         
             </div>
-             <nav id="menu">
+                <nav id="menu">
                 <ul >
                                                         <li ><a href="around.html"  target="">
-                        <img alt="local icon" class="tiled-icon" style="width: 20px; height: 20px;" src="https://cdn1.iconfinder.com/data/icons/google_jfk_icons_by_carlosjj/128/local.png"> 
+                        <img alt="local icon" class="tiled-icon" style="width: 20px; height: 20px;" src="icon/local.png"> 
                         
             Local</a>
                         </li>
                                         <li ><a href="global.html"  target="">
-                        <img alt="blue, browser, earth, global, globe, international, internet, planet, world icon" class="tiled-icon" style="width: 20px; height: 20px;" src="https://cdn2.iconfinder.com/data/icons/Siena/128/globe%20blue.png">
+                        <img alt="blue, browser, earth, global, globe, international, internet, planet, world icon" class="tiled-icon" style="width: 20px; height: 20px;" src="icon/globeblue.png">
                         
             Global</a>
              
@@ -276,7 +258,7 @@ navigator.notification.activityStart("RococoPhoto", "updating");
                                     </ul>
                             </li>
                                         <li ><a href="match.html"  target="">
-                        <img alt="delete, photo icon" class="tiled-icon" style="width: 20px; height: 20px;" src="https://cdn3.iconfinder.com/data/icons/fatcow/32x32_0700/photo_delete.png">
+                        <img alt="delete, photo icon" class="tiled-icon" style="width: 20px; height: 20px;" src="icon/photo_delete.png">
                         
             Matching</a>
                         </li>
@@ -285,32 +267,32 @@ navigator.notification.activityStart("RococoPhoto", "updating");
                         
             Self Camera</a>
              
-                            <ul>
-                                                                <li><a href="talent.html?cat=1"  target="">Face</a>
+                             <ul>
+                                                                <li><a href="talent.html?cat=1"  target="">Pool Photo</a>
                                                         
                         </li>
-                                            <li><a href="talent.html?cat=2"  target="">Body</a>
+                                            <li><a href="talent.html?cat=2"  target="">Beach</a>
                                                         
                         </li>
-                                            <li><a href="talent.html?cat=3"  target="">Home</a>
+                                            <li><a href="talent.html?cat=3"  target="">Body</a>
                                                         
                         </li>
-                                            <li><a href="talent.html?cat=4"  target="">Travel</a>
+                                            <li><a href="talent.html?cat=4"  target="">20 Age</a>
                                                         
                         </li>
-                                            <li><a href="talent.html?cat=5"  target="">Star Photo</a>
+                                            <li><a href="talent.html?cat=5"  target="">30 Age</a>
                                                         
                         </li>
-                                            <li><a href="talent.html?cat=6"  target="">Macho</a>
+                                            <li><a href="talent.html?cat=6"  target="">40 Age</a>
                                                         
                         </li>
-                                            <li><a href="talent.html?cat=7"  target="">Sliver</a>
+                                            <li><a href="talent.html?cat=7"  target="">50 Age</a>
                                                         
                         </li>
-                                            <li><a href="talent.html?cat=8"  target="">Bear</a>
+                                            <li><a href="talent.html?cat=8"  target="">60 Age</a>
                                                         
                         </li>
-                                            <li><a href="talent.html?cat=9"  target="">TG</a>
+                                            <li><a href="talent.html?cat=9"  target="">Daddy</a>
                                                         
                         </li>
                                             <li><a href="talent.html?cat=10"  target="">Europe</a>
@@ -330,7 +312,7 @@ navigator.notification.activityStart("RococoPhoto", "updating");
                                         <li ><a href="loveletter.html"  target="">
             <img alt="in, love icon" class="tiled-icon" style="width: 20px; height: 20px;" src="icon/loveletter.png">
                         
-            LoveLetter</a>
+            Freeboard</a>
              
                             <ul>
                                                                 <li><a href="loveletter.html?sub_code=1"  target="">GBR</a>
@@ -411,10 +393,10 @@ navigator.notification.activityStart("RococoPhoto", "updating");
                                     </ul>
                             </li>
                                         <li ><a href="letdrive.html"  target="">
-            <img alt="award, best, bestseller, emblem, ribbon, seller, trophy icon" class="tiled-icon" style="width: 20px; height: 20px;" src="https://cdn4.iconfinder.com/data/icons/pc_de_hamburg_icon_pack/32x32/bestseller.png">
+            <img alt="award, best, bestseller, emblem, ribbon, seller, trophy icon" class="tiled-icon" style="width: 20px; height: 20px;" src="icon/bestseller.png">
 
                         
-            Let's Drive</a>
+            Pride Parade</a>
              
                             <ul>
                                                                 <li><a href="letdrive.html?sub_code=1"  target="">GBR</a>
@@ -495,7 +477,7 @@ navigator.notification.activityStart("RococoPhoto", "updating");
                                     </ul>
                             </li>
                                         <li ><a href="rank.html"  target="">
-                            <img alt="announcement, base, chat, chatter, colloquy, commune, communication, confabulate, conversation, converse, dangle, forum, gossip, information, interview, message, prattle, report, sms, statement, talk icon" class="tiled-icon"  src="https://cdn1.iconfinder.com/data/icons/professional-toolbar-icons-png/64/Chat.png" style="width: 20px; height: 20px;">
+                            <img alt="announcement, base, chat, chatter, colloquy, commune, communication, confabulate, conversation, converse, dangle, forum, gossip, information, interview, message, prattle, report, sms, statement, talk icon" class="tiled-icon"  src="icon/Chat.png" style="width: 20px; height: 20px;">
                         
             Rank</a>
              
@@ -578,9 +560,9 @@ navigator.notification.activityStart("RococoPhoto", "updating");
                                     </ul>
                             </li>
                                         <li ><a href="lovechat.html"  target="">
-                        <img alt="announcement, base, chat, chatter, colloquy, commune, communication, confabulate, conversation, converse, dangle, forum, gossip, information, interview, message, prattle, report, sms, statement, talk icon" class="tiled-icon"  src="https://cdn1.iconfinder.com/data/icons/professional-toolbar-icons-png/64/Chat.png" style="width: 20px; height: 20px;">
+                        <img alt="announcement, base, chat, chatter, colloquy, commune, communication, confabulate, conversation, converse, dangle, forum, gossip, information, interview, message, prattle, report, sms, statement, talk icon" class="tiled-icon"  src="icon/Chat.png" style="width: 20px; height: 20px;">
                         
-            Love Chat</a>
+            Concern</a>
              
                             <ul>
                                                                 <li><a href="lovechat.html?sub_code=1"  target="">GBR</a>
@@ -661,9 +643,9 @@ navigator.notification.activityStart("RococoPhoto", "updating");
                                     </ul>
                             </li>
                                         <li ><a href="hopechat.html"  target="">
-                        <img alt="bookmark, favorite, star icon" class="tiled-icon" style="width: 20px; height: 20px;" src="https://cdn0.iconfinder.com/data/icons/Natsu_PNG/128/Natsu-Fav.png">
+                        <img alt="bookmark, favorite, star icon" class="tiled-icon" style="width: 20px; height: 20px;" src="icon/Natsu-Fav.png">
                         
-            Hope Chat</a>
+            Job</a>
              
                             <ul>
                                                                 <li><a href="hopechat.html?sub_code=1"  target="">GBR</a>
@@ -744,7 +726,7 @@ navigator.notification.activityStart("RococoPhoto", "updating");
                                     </ul>
                             </li>
                                         <li ><a href="premium.html"  target="">
-                            <img alt="green, star icon" class="tiled-icon" style="width: 20px; height: 20px;" src="https://cdn0.iconfinder.com/data/icons/sweets/128/green_star.png">
+                            <img alt="green, star icon" class="tiled-icon" style="width: 20px; height: 20px;" src="icon/green_star.png">
                             
             Premium</a>
              
@@ -763,36 +745,35 @@ navigator.notification.activityStart("RococoPhoto", "updating");
                         </li>
                                     </ul>
                             </li>
-                                        <li ><a href="http://rococophoto.net"  target="">
+                                       <li><a href="link.html"  target="">
                             <img alt="blue, star icon" class="tiled-icon" style="width: 20px; height: 20px;" src="https://cdn0.iconfinder.com/data/icons/sweets/128/blue_star.png">
                             
-            pc</a>
+            Link</a>
                         </li>
                                                 
 
                 </ul>
             </nav>
- 
-           <nav id="menu-right">
+
+          <nav id="menu-right">
             <ul>
-                            <li><span><img alt="login icon" class="tiled-icon" style="width: 20px; height: 20px;" src="https://cdn4.iconfinder.com/data/icons/munich/32x32/logout.png"><a  onclick="logout();"> <span id="rightmenu1">Logout</span></span></a></li>
-                <li><span><img alt="email, envelope, mail icon" class="tiled-icon" style="width: 20px; height: 20px;" src="https://cdn4.iconfinder.com/data/icons/simplicio/128x128/mail.png"><a onclick="goHref('/?mod=chat_main&uid=');"><span id="rightmenu2">메시지함</a></span></li>     
-                <li><span><a onclick="goHref('/?mod=mypage&&amp;page=people3');"> <img alt="friends, group, people, persons, users icon" class="tiled-icon" style="width: 20px; height: 20px;" src="https://cdn3.iconfinder.com/data/icons/developerkit/png/Users.png"><span id="rightmenu3">본 사람</span></a></span></li>     
-                <li><span><a onclick="goHref('/?mod=mypage&&amp;page=people');"><img alt="people, y icon" class="tiled-icon" style="width: 20px; height: 20px;" src="https://cdn1.iconfinder.com/data/icons/all_google_icons_symbols_by_carlosjj-du/128/people-y.png"> <span id="rightmenu4">내가 찜한 친구</span></a></span></li>     
-                <li><span><a onclick="goHref('/?mod=mypage&&amp;page=people2');"><img alt="b, people icon" class="tiled-icon" style="width: 20px; height: 20px;" src="https://cdn1.iconfinder.com/data/icons/all_google_icons_symbols_by_carlosjj-du/128/people-b.png"><span id="rightmenu5">나를 찜한 친구</span></a></span></li> 
-                <li><span><a onclick="goHref('/?mod=mypage&amp;page=simbol2');"><img alt="camera icon" class="tiled-icon" style="width: 20px; height: 20px;" src="icon/camera_icon.png"> <span id="rightmenu6">사진 등록</span></a></span></li>
-                <li><span><a onclick="goHref('/?mod=mypage&amp;page=info');"><img alt="document, edit, red icon" class="tiled-icon" style="width: 20px; height: 20px;" src="icon/pen.png"> <span id="rightmenu7">정보 수정</span></a></span></li>
-                <li><span><a onclick="goHref('/?mod=mypage&amp;page=pw');"><img alt="lock, locked, password, secure, security, unlock icon" class="tiled-icon" style="width: 20px; height: 20px;" src="https://cdn4.iconfinder.com/data/icons/flat-icon-set/128/lock-icon.png"> <spam id="rightmenu8">비밀번호 변경</spam></a></span></li>
-                <li><span><a onclick="goHref('/?mod=mypage&amp;page=out');" ><img alt="delete, user icon" class="tiled-icon" style="width: 20px; height: 20px;" src="https://cdn4.iconfinder.com/data/icons/simplicio/128x128/user_delete.png"> <span id="rightmenu9">회원탈퇴</span></a></span></li>
-                <li><span><a onclick="goHref('/?mod=help2');"><img alt="setup icon" class="tiled-icon" style="width: 20px; height: 20px;" src="https://cdn4.iconfinder.com/data/icons/free-dark-blue-cloud-icons/96/Setup.png">  <span id="rightmenu10">프리미엄 서비스</span> </a></span></li>
-                <li><span><a onclick="goHref('/?mod=setup');"><img alt="setup icon" class="tiled-icon" style="width: 20px; height: 20px;" src="https://cdn4.iconfinder.com/data/icons/free-dark-blue-cloud-icons/96/Setup.png"> <span id="rightmenu11">설정하기</a></span></li>
-                <li><span><a onclick="goHref('/?mod=setup2');"><img alt="premium, support icon" class="tiled-icon" style="width: 20px; height: 20px;" src="https://cdn0.iconfinder.com/data/icons/fatcow/32x32/premium_support.png"> <span id="rightmenu12">이용약관</span></a></span></li>
+                            <li><span><img alt="login icon" class="tiled-icon" style="width: 20px; height: 20px;" src="icon/logout.png"><a  onclick="logout();"> <span id="rightmenu1">Logout</span></span></a></li>
+                <li><span><img alt="email, envelope, mail icon" class="tiled-icon" style="width: 20px; height: 20px;" src="icon/mail.png"><a onclick="goHref('/?mod=chat_main&uid=');"><span id="rightmenu2">Message Box</a></span></li>     
+                <li><span><a onclick="goHref('/?mod=mypage&&amp;page=people3');"> <img alt="friends, group, people, persons, users icon" class="tiled-icon" style="width: 20px; height: 20px;" src="icon/Users.png"><span id="rightmenu3">viewlist</span></a></span></li>     
+                <li><span><a onclick="goHref('/?mod=mypage&&amp;page=people');"><img alt="people, y icon" class="tiled-icon" style="width: 20px; height: 20px;" src="icon/people-y.png"> <span id="rightmenu4">pickedmember</span></a></span></li>     
+                <li><span><a onclick="goHref('/?mod=mypage&&amp;page=people2');"><img alt="b, people icon" class="tiled-icon" style="width: 20px; height: 20px;" src="icon/people-b.png"><span id="rightmenu5">pickedme</span></a></span></li> 
+                <li><span><a onclick="goHref('/?mod=mypage&amp;page=simbol2');"><img alt="camera icon" class="tiled-icon" style="width: 20px; height: 20px;" src="icon/camera_icon.png"> <span id="rightmenu6">Photo Upload</span></a></span></li>
+                <li><span><a onclick="goHref('/?mod=mypage&amp;page=info');"><img alt="document, edit, red icon" class="tiled-icon" style="width: 20px; height: 20px;" src="icon/pen.png"> <span id="rightmenu7">Myinfo Edit</span></a></span></li>
+                <li><span><a onclick="goHref('/?mod=mypage&amp;page=pw');"><img alt="lock, locked, password, secure, security, unlock icon" class="tiled-icon" style="width: 20px; height: 20px;" src="icon/lock-icon.png"> <spam id="rightmenu8">Change Password</spam></a></span></li>
+                <li><span><a onclick="goHref('/?mod=mypage&amp;page=out');" ><img alt="delete, user icon" class="tiled-icon" style="width: 20px; height: 20px;" src="icon/user_delete.png"> <span id="rightmenu9">Withdrawal</span></a></span></li>
+                <li><span><a onclick="goHref('/?mod=help2');"><img alt="setup icon" class="tiled-icon" style="width: 20px; height: 20px;" src="icon/Setup.png">  <span id="rightmenu10">Premium service</span> </a></span></li>
+                <li><span><a onclick="goHref('/?mod=setup');"><img alt="setup icon" class="tiled-icon" style="width: 20px; height: 20px;" src="icon/Setup.png"> <span id="rightmenu11">Push setup</a></span></li>
+                <li><span><a onclick="goHref('/?mod=setup2');"><img alt="premium, support icon" class="tiled-icon" style="width: 20px; height: 20px;" src="icon/premium_support.png"> <span id="rightmenu12">termsandconditions</span></a></span></li>
                 <li><span id="rightmenu0"></span></li>
                 </ul>
             </nav>
 
-            
 
         </div>
-test
-text
+
+      
